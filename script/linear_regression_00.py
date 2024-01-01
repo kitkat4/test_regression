@@ -1,4 +1,11 @@
 #!/usr/bin/env python3
+#coding:utf-8
+
+"""
+決定論的でシンプルな線型回帰。
+基底関数の線型結合でサンプルによくフィットする関数を表現する。
+最小化するのは各サンプルの誤差の二乗和。
+"""
 
 import numpy as np
 import matplotlib.pyplot as plt
