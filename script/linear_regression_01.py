@@ -52,7 +52,7 @@ def plot(bases, parameters_mean, parameters_cov, stddev_of_samples, range_x_min,
 
     fig = plt.figure()
     ax = fig.add_subplot(111)
-    ax.scatter(samples_x, samples_y, marker='.')
+    
     N = 1000
     tmp_x = np.linspace(range_x_min, range_x_max, N)
     tmp_y = np.zeros(N)
@@ -64,9 +64,9 @@ def plot(bases, parameters_mean, parameters_cov, stddev_of_samples, range_x_min,
     tmp1 = parameters_cov @ tmp_phi
     for i in range(N):
         tmp_uncertainty[i] = np.dot(tmp_phi[:, i], tmp1[:, i]) + stddev_of_samples ** 2
-    ax.plot(tmp_x, tmp_y + 3 * tmp_uncertainty, color="gray")
-    ax.plot(tmp_x, tmp_y - 3 * tmp_uncertainty, color="gray")
+    ax.fill_between(tmp_x, tmp_y - 3 * tmp_uncertainty, tmp_y + 3 * tmp_uncertainty, fc="silver")
     ax.plot(tmp_x, tmp_y, color="black")
+    ax.scatter(samples_x, samples_y, marker='.')
     ax.grid()
     ax.set_xlabel('x')
     ax.set_ylabel('y')
